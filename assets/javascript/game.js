@@ -26,8 +26,10 @@ var fruits = ["Banana", "Orange", "Apple", "Mango"];
 
 var numberOfCrystalGems=4;
 var crystalGemImages=['assets/images/greenGod.png','assets/images/heartGem.png','assets/images/monkeyGem.png','assets/images/unicornGem.png'];
-//var crystalGemImages=['apple','strawberry','blueberry','peach'];
-//var randomNumber;
+var successGifs=['assets/images/greenGod.png','assets/images/heartGem.png','assets/images/monkeyGem.png','assets/images/unicornGem.png'];
+var failureGifs=['assets/images/greenGod.png','assets/images/heartGem.png','assets/images/monkeyGem.png','assets/images/unicornGem.png'];
+
+
 var targetNumber = 0;
 var userNumber=88;
 var wrongAnswerCount;
@@ -168,7 +170,16 @@ function titleScreen(){
 function gameScreen(){
 
 	$('#gameContent').empty();
-	$('#gameContent').append('<div id="randomNumberContainer"><div id="randomNumberLabel">Target Number:</div><div id="randomNumberHolder"></div></div>');
+	$('#gameContent').append('<div id="currentQuestionContainer"><div id="currentQuestionLabel">Question:</div><div id="currentQuestionHolder"></div></div>');
+	$('#gameContent').append('<div id="currentAContainer"><div id="currentALabel">A:</div><div id="currentAHolder"></div></div>');
+	$('#gameContent').append('<div id="currentBContainer"><div id="currentBLabel">B:</div><div id="currentBHolder"></div></div>');
+	$('#gameContent').append('<div id="currentCContainer"><div id="currentCLabel">C:</div><div id="currentCHolder"></div></div>');
+	$('#gameContent').append('<div id="currentDContainer"><div id="currentDLabel">D:</div><div id="currentDHolder"></div></div>');
+	$('#gameContent').append('<div id="currentAnswerContainer"><div id="currentAnswerLabel">Answer:</div><div id="currentAnswerHolder"></div></div>');
+
+	$('#gameContent').append('<div id="currentFeedbackContainer"><div id="currentFeedbackLabel">Question:</div><div id="currentFeedbackHolder"></div></div>');
+
+
 	$('#gameContent').append('<div id="playerNumberContainer"><div id="playerNumberLabel">Your Number:</div><div id="playerNumberHolder"></div></div>');
 	$('#gameContent').append('<div id="crystalGemContainer"><div id="crystalGemHolder"></div></div>');
 	$('#gameContent').append('<div id="feedback"></div>');
@@ -178,16 +189,19 @@ function gameScreen(){
 //the getQuestion function, and then creates the approptiate number of tiles
 //this block also initiates the WAC count and the PG array. 			
 getQuestion();
+//MUST REVIEW THE SCOPE ISSUE THAT WAS BASICALLY IF THIS METHOD IS HERE THEN 
+//THE JSON VARIABLES LIKE "triviaRandomBank.length" are defined, but if not here
+//riviaRandomBank.length returns a 0 and makes RND become zero...
 
 
 
+$('#currentQuestionHolder').text(currentQuestion);
+$('#currentAHolder').text(currentA);
+$('#currentBHolder').text(currentB);
+$('#currentCHolder').text(currentC);
+$('#currentDHolder').text(currentD);
+$('#currentAnswerHolder').text(currentAnswer);
 
-//function crystalGemGenorator() {
-
-//this block resets all the values for a new game..
-//Each crystal should have a random hidden value between 1 - 12.
-//The random number shown at the start of the game should be between 19 - 120.
-//random non-repeating number
 
 
 
